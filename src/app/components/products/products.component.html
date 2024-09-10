@@ -1,0 +1,26 @@
+<div class="products-container">
+  @if(products) {
+<!--    <mat-grid-list cols="3" rowHeight="1:1">-->
+<!--      <mat-grid-tile *ngFor="let product of products">-->
+<!--        <app-product-card [product]="product"></app-product-card>-->
+<!--      </mat-grid-tile>-->
+<!--    </mat-grid-list>-->
+
+
+      <mat-grid-list cols="3" rowHeight="1:1">
+    @for (product of products; track product._id) {
+        <mat-grid-tile>
+          <app-product-card [product]="product"/>
+        </mat-grid-tile>
+    }
+      </mat-grid-list>
+
+  }
+
+
+  @if (pageInfo) {
+    <app-paginator (pageChange)="onPageChange($event)" [pageInfo]="pageInfo"></app-paginator>
+  }
+
+
+</div>

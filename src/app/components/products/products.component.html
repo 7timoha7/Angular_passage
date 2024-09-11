@@ -8,7 +8,10 @@
   } @else if (products || !loadingProducts) {
     <div class="card_container">
       @for (product of products; track product._id) {
-        <app-product-card [product]="product"/>
+        <app-product-card
+          [product]="product"
+          (click)="navigateToProduct(product.goodID)"
+        />
       }
     </div>
   }

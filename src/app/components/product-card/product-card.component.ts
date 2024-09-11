@@ -13,7 +13,7 @@ import {apiUrl} from "../../../constatns";
   styleUrl: './product-card.component.css'
 })
 export class ProductCardComponent {
-  @Input() product?: ProductType; // Делаем свойство необязательным
+  @Input() product: ProductType | undefined; // Делаем свойство необязательным
 
   get productImage(): string {
     return this.product?.images?.length

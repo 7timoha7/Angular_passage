@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {ProductCardComponent} from "../product-card/product-card.component";
 import {ProductsService} from "../../services/products.service";
 import {PaginatorComponent} from "../paginator/paginator/paginator.component";
@@ -6,6 +6,7 @@ import {PageInfo, ProductType} from "../../interfaces/type";
 import {MatGridList, MatGridTile} from "@angular/material/grid-list";
 import {NgForOf} from "@angular/common";
 import {SpinnerComponent} from "../spinner/spinner.component";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -28,6 +29,7 @@ export class ProductsComponent {
   pageInfo?: PageInfo; // Делаем свойство необязательным
   currentPage = 1; // Текущая страница
   loadingProducts: boolean = false
+  private router = inject(Router)
 
 
   constructor(private productsService: ProductsService) {
@@ -56,5 +58,9 @@ export class ProductsComponent {
   onPageChange(event: { pageIndex: number }) {
     this.currentPage = event.pageIndex; // Обновляем текущую страницу
     this.loadProducts(this.currentPage); // Перезагружаем продукты для новой страницы
+  }
+
+  navigateToProduct(productId: string) {
+    this.router.navigate(['/product/', productId]);
   }
 }

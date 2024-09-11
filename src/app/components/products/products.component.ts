@@ -1,10 +1,11 @@
-import {Component, inject} from '@angular/core';
+import {Component} from '@angular/core';
 import {ProductCardComponent} from "../product-card/product-card.component";
 import {ProductsService} from "../../services/products.service";
 import {PaginatorComponent} from "../paginator/paginator/paginator.component";
 import {PageInfo, ProductType} from "../../interfaces/type";
 import {MatGridList, MatGridTile} from "@angular/material/grid-list";
 import {NgForOf} from "@angular/common";
+import {SpinnerComponent} from "../spinner/spinner.component";
 
 
 @Component({
@@ -15,7 +16,8 @@ import {NgForOf} from "@angular/common";
     PaginatorComponent,
     MatGridList,
     NgForOf,
-    MatGridTile
+    MatGridTile,
+    SpinnerComponent,
   ],
   templateUrl: './products.component.html',
   styleUrl: './products.component.css'
@@ -25,37 +27,34 @@ export class ProductsComponent {
   products: ProductType[] = []; // Массив для хранения продуктов
   pageInfo?: PageInfo; // Делаем свойство необязательным
   currentPage = 1; // Текущая страница
+  loadingProducts: boolean = false
+
 
   constructor(private productsService: ProductsService) {
   }
 
   ngOnInit() {
     this.loadProducts(this.currentPage); // Загружаем продукты при инициализации компонента
-
   }
 
   loadProducts(page: number) {
-    this.productsService.getProducts(page).subscribe(
-      (response) => {
+    this.loadingProducts = true
+    this.productsService.getProducts(page).subscribe({
+      next: (response) => {
         this.products = response.products; // Сохраняем полученные продукты
         this.pageInfo = response.pageInfo; // Сохраняем информацию о страницах
-        this.logProducts()
       },
-      (error) => {
+      error: (error: Error) => {
         console.error('Ошибка при загрузке продуктов:', error);
+      },
+      complete: () => {
+        this.loadingProducts = false
       }
-    );
+    });
   }
 
   onPageChange(event: { pageIndex: number }) {
     this.currentPage = event.pageIndex; // Обновляем текущую страницу
     this.loadProducts(this.currentPage); // Перезагружаем продукты для новой страницы
   }
-
-  logProducts = () => {
-    console.log(this.products);
-    console.log(this.pageInfo);
-  }
-
-
 }

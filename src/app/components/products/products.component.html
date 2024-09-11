@@ -1,26 +1,22 @@
+<link rel="stylesheet" href="products.component.css">
 <div class="products-container">
-  @if(products) {
-<!--    <mat-grid-list cols="3" rowHeight="1:1">-->
-<!--      <mat-grid-tile *ngFor="let product of products">-->
-<!--        <app-product-card [product]="product"></app-product-card>-->
-<!--      </mat-grid-tile>-->
-<!--    </mat-grid-list>-->
+  @if (loadingProducts) {
+    <div class="spinner_container">
+      <app-spinner/>
+    </div>
 
-
-      <mat-grid-list cols="3" rowHeight="1:1">
-    @for (product of products; track product._id) {
-        <mat-grid-tile>
-          <app-product-card [product]="product"/>
-        </mat-grid-tile>
-    }
-      </mat-grid-list>
-
+  } @else if (products || !loadingProducts) {
+    <div class="card_container">
+      @for (product of products; track product._id) {
+        <app-product-card [product]="product"/>
+      }
+    </div>
   }
 
 
   @if (pageInfo) {
     <app-paginator (pageChange)="onPageChange($event)" [pageInfo]="pageInfo"></app-paginator>
   }
-
-
 </div>
+
+

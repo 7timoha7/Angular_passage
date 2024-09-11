@@ -1,6 +1,6 @@
 @if (product) {
   <mat-card class="example-card">
-    <img mat-card-image [src]=product.images [alt]=product.name>
+    <img mat-card-image class="card_img" [src]='productImage' [alt]=product.name>
     <mat-card-content>
       <p> {{ product.name }} </p>
       <p>{{ product.price }}</p>

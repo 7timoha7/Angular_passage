@@ -9,6 +9,7 @@ import {apiUrl} from "../../constatns";
 })
 export class ProductsService {
 
+
   // http = inject(HttpClient)
   product = signal<ProductType | null>(null)
 

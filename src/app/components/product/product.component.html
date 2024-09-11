@@ -5,11 +5,12 @@
 } @else if (product && !loadingProduct) {
   <div class="product_container">
     <mat-card class="example-card">
-      <img mat-card-image [src]="productImage(product?.images)" [alt]="product?.name">
+
+      <img mat-card-image [src]="productImage(product.images)" [alt]="product.name">
       <mat-card-content>
-        <mat-card-title>{{ product?.name }}</mat-card-title>
-        <p>Цена: {{ product?.price }}</p>
-        <p>{{ product?.size }}</p>
+        <mat-card-title>{{ product.name }}</mat-card-title>
+        <p>Цена: {{ product.price }}</p>
+        <p>{{ product.size }}</p>
       </mat-card-content>
       <mat-card-actions>
 

@@ -22,23 +22,21 @@ import {PageInfo} from "../../../interfaces/type";
   styleUrl: './paginator.component.css'
 })
 export class PaginatorComponent implements OnChanges {
-  @Output() pageChange = new EventEmitter<PageEvent>(); // Создаем событие для передачи информации о смене страницы
-  @Input() pageInfo?: PageInfo; // Входящий параметр с информацией о страницах
+  @Output() pageChange = new EventEmitter<PageEvent>();
+  @Input() pageInfo?: PageInfo;
 
-  length = 0; // Общее количество элементов
-  pageSize = 20; // Количество элементов на странице
-  pageIndex = 0; // Текущий индекс страницы
-  pageSizeOptions = []; // Варианты размера страницы
+  length = 0;
+  pageSize = 20;
+  pageIndex = 0;
+  pageSizeOptions = [];
 
   ngOnChanges(changes: SimpleChanges) {
-    // Проверяем, было ли изменено pageInfo
     if (changes['pageInfo'] && this.pageInfo) {
       this.updatePaginatorValues();
     }
   }
 
   updatePaginatorValues() {
-    // this.pageIndex = 1; // Материальный пагинатор использует индекс страниц, начиная с 0
     this.pageSize = this.pageInfo!.pageSize;
     this.length = this.pageInfo!.totalItems;
   }
@@ -51,6 +49,6 @@ export class PaginatorComponent implements OnChanges {
     }
 
     this.pageSize = event.pageSize;
-    this.pageChange.emit(event); // Передаем событие в родительский компонент
+    this.pageChange.emit(event);
   }
 }

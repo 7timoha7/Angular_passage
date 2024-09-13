@@ -1,0 +1,31 @@
+<div class="categories-container">
+  <ul class="categories-list">
+    <li *ngFor="let category of categoriesModernized">
+      <div class="category-item">
+        <span (click)="navigateToProductsCategory(category.ID)">{{ category.name }}</span>
+        <span *ngIf="category.subCategories?.length" class="toggle-arrow" [class.expanded]="category.expanded"
+              (click)="toggleCategory(category)">
+          &#9654;
+        </span>
+      </div>
+      <ul *ngIf="category.expanded" class="subcategories-list">
+        <li *ngFor="let subCategory of category.subCategories">
+          <div class="subcategory-item">
+            <span (click)="navigateToProductsCategory(subCategory.ID)">{{ subCategory.name }}</span>
+            <span *ngIf="subCategory.subCategories?.length" class="toggle-arrow"
+                  [class.expanded]="subCategory.expanded" (click)="toggleCategory(subCategory)">
+              &#9654;
+            </span>
+          </div>
+          <ul *ngIf="subCategory.expanded" class="subcategories-list">
+            <li *ngFor="let subSubCategory of subCategory.subCategories">
+              <div class="subcategory-item" (click)="navigateToProductsCategory(subSubCategory.ID)">
+                {{ subSubCategory.name }}
+              </div>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>

@@ -29,3 +29,16 @@ export interface PageInfo {
   pageSize: number;
   totalItems: number;
 }
+
+export interface CategoriesType {
+  _id: string;
+  name: string;
+  ID: string;
+  ownerID?: string;
+  productsHave: boolean;
+}
+
+export interface HierarchicalCategory extends CategoriesType {
+  subCategories?: HierarchicalCategory[];
+  expanded?: boolean;
+}

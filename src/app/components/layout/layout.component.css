@@ -1,0 +1,28 @@
+.layout-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 300px auto;
+  flex: 1;
+  gap: 10px;
+}
+
+.menu {
+  background-color: #f0f0f0;
+  padding: 10px;
+}
+
+.content {
+  background-color: #ffffff;
+  padding: 10px;
+}
+
+.footer {
+  height: 80px;
+  background: #00ffc8;
+  margin-top: auto;
+}

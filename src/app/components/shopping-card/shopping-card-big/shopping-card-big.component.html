@@ -1,0 +1,50 @@
+<div>
+  <h6>Корзина</h6>
+
+  <div>
+    @if (shoppingCardService.shoppingCard()?.totalPrice) {
+      <table class="shopping-table">
+        <thead>
+        <tr>
+          <th>No.</th>
+          <th>Name</th>
+          <th>Quantity</th>
+          <th>Price</th>
+        </tr>
+        </thead>
+        <tbody>
+          @for (shoppingCard of shoppingCardService.shoppingCard()?.items; track shoppingCard.product) {
+            <tr>
+              <td>{{ $index + 1 }}</td>
+              <td>
+                <div class="shopping-img-container">
+                  <img class="shopping-img" [src]="productImage(shoppingCard.product.images)"
+                       [alt]="shoppingCard.product.name">
+                  {{ shoppingCard.product.name }}
+                </div>
+
+              </td>
+              <td>{{ shoppingCard.quantity }}</td>
+              <td>{{ shoppingCard.product.price }}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+      <p>Общая сумма: {{ shoppingCardService.shoppingCard()?.totalPrice }}</p>
+
+      <div class="shopping-btn-container">
+        <button (click)="clearShoppingCard({
+         sessionKey: shoppingCardService.shoppingCard()?.session_key,
+         product_id: 'clear',
+         action:'clear',
+      })" mat-raised-button color="warn">Очистить корзину
+        </button>
+
+        <button (click)="navigate()" mat-raised-button color="primary">Оформить заказ</button>
+      </div>
+
+    } @else {
+      <p>Корзина пуста</p>
+    }
+  </div>
+</div>

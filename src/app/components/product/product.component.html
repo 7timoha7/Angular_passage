@@ -13,7 +13,13 @@
         <p>{{ product.size }}</p>
       </mat-card-content>
       <mat-card-actions>
-
+        <button (click)="this.addProductToShoppingCard({
+        sessionKey: sessionKey,
+        product_id: product.goodID,
+        action:'increase'
+        })" mat-fab color="warn" aria-label="Example icon button with a home icon">
+          <mat-icon>add_shopping_cart</mat-icon>
+        </button>
       </mat-card-actions>
     </mat-card>
   </div>

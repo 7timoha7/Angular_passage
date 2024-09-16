@@ -1,0 +1,24 @@
+.shopping-img {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.shopping-img-container {
+  display: flex;
+  align-items: center;
+}
+
+.shopping-table {
+  width: 100%;
+  border: 2px solid gray;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.shopping-btn-container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}

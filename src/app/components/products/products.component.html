@@ -5,7 +5,7 @@
       <app-spinner/>
     </div>
 
-  } @else if (products || !loadingProducts) {
+  } @else if (products && !loadingProducts) {
     <h4>{{ this.categoryName }}</h4>
     <div class="card_container">
       @for (product of products; track product._id) {

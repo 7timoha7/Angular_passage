@@ -1,0 +1,4 @@
+.form-order {
+  display: flex;
+  flex-direction: column;
+}

@@ -3,9 +3,14 @@
 }
 
 .tool-bar {
-  background: #00ffc8;
+  background-image: url("/assets/img/Chimney and posts.jpg");
+  background-repeat: repeat;
+  background-size: contain;
+  height: 160px;
+
 }
 
 .logo {
-  text-decoration: none;
+  max-width: 150px;
+  display: block;
 }

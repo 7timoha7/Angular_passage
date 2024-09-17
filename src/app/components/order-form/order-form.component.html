@@ -1,51 +1,54 @@
-<form class="form-order" [formGroup]="orderForm">
+<div class="form-container">
+  <form class="form-order" [formGroup]="orderForm">
 
-  <mat-form-field appearance="fill">
-    <mat-label>Имя</mat-label>
-    <input matInput formControlName="firstName" placeholder="Введите ваше имя" required>
-  </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Имя</mat-label>
+      <input matInput formControlName="firstName" placeholder="Введите ваше имя" required>
+    </mat-form-field>
 
-  <mat-form-field appearance="fill">
-    <mat-label>Фамилия</mat-label>
-    <input matInput formControlName="lastName" placeholder="Введите вашу фамилию">
-  </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Фамилия</mat-label>
+      <input matInput formControlName="lastName" placeholder="Введите вашу фамилию">
+    </mat-form-field>
 
-  <mat-form-field appearance="fill">
-    <mat-label>Номер телефона</mat-label>
-    <input matInput formControlName="phone" placeholder="+7 (___) ___-__-__" required>
-  </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Номер телефона</mat-label>
+      <input matInput formControlName="phone" placeholder="+7 (___) ___-__-__" required>
+    </mat-form-field>
 
-  <mat-form-field appearance="fill">
-    <mat-label>Email</mat-label>
-    <input matInput formControlName="email" placeholder="example@mail.com">
-  </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" placeholder="example@mail.com">
+    </mat-form-field>
 
-  <mat-form-field appearance="fill">
-    <mat-label>Способ оплаты</mat-label>
-    <mat-select formControlName="paymentMethod">
-      <mat-option value="cash">Наличные</mat-option>
-      <mat-option value="card">Безналичные</mat-option>
-    </mat-select>
-  </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Способ оплаты</mat-label>
+      <mat-select formControlName="paymentMethod">
+        <mat-option value="cash">Наличные</mat-option>
+        <mat-option value="card">Безналичные</mat-option>
+      </mat-select>
+    </mat-form-field>
 
-  <mat-form-field appearance="fill">
-    <mat-label>Способ доставки</mat-label>
-    <mat-select formControlName="deliveryMethod">
-      <mat-option value="pickup">Самовывоз</mat-option>
-      <mat-option value="delivery">Доставка</mat-option>
-    </mat-select>
-  </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Способ доставки</mat-label>
+      <mat-select formControlName="deliveryMethod">
+        <mat-option value="pickup">Самовывоз</mat-option>
+        <mat-option value="delivery">Доставка</mat-option>
+      </mat-select>
+    </mat-form-field>
 
-  <mat-form-field appearance="fill" *ngIf="orderForm.get('deliveryMethod')?.value === 'delivery'">
-    <mat-label>Адрес</mat-label>
-    <input matInput formControlName="address" placeholder="Введите ваш адрес">
-  </mat-form-field>
+    <mat-form-field appearance="fill" *ngIf="orderForm.get('deliveryMethod')?.value === 'delivery'">
+      <mat-label>Адрес</mat-label>
+      <input matInput formControlName="address" placeholder="Введите ваш адрес">
+    </mat-form-field>
 
-  <mat-form-field appearance="fill">
-    <mat-label>Комментарий к заказу</mat-label>
-    <textarea matInput formControlName="comment" placeholder="Введите комментарий"></textarea>
-  </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Комментарий к заказу</mat-label>
+      <textarea matInput formControlName="comment" placeholder="Введите комментарий"></textarea>
+    </mat-form-field>
 
-  <app-dialog [disabled]="orderForm.valid"/>
+    <app-dialog [disabled]="orderForm.valid"/>
 
-</form>
+  </form>
+</div>
+

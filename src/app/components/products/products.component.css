@@ -3,6 +3,10 @@
   gap: 20px;
   flex-wrap: wrap;
   justify-content: center;
+  border: 5px solid #414040;
+  margin: 5px;
+  padding: 10px;
+  border-radius: 10px;
 }
 
 .spinner_container {

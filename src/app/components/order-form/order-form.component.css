@@ -1,4 +1,13 @@
 .form-order {
   display: flex;
   flex-direction: column;
+  max-width: 500px;
+  min-width: 350px;
+  background: rgba(255, 255, 255, 0.68);
+  padding: 20px;
+}
+
+.form-container {
+  display: flex;
+  justify-content: center;
 }

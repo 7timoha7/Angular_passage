@@ -12,17 +12,19 @@
 }
 
 .menu {
-  background-color: #f0f0f0;
+  background-color: #9d9999;
   padding: 10px;
 }
 
 .content {
-  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0);
   padding: 10px;
 }
 
 .footer {
-  height: 80px;
-  background: #00ffc8;
+  height: 160px;
+  background-image: url("/assets/img/Chimney and posts.jpg");
+  background-repeat: repeat;
+  background-size: contain;
   margin-top: auto;
 }
